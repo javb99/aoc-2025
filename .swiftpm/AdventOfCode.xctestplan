@@ -1,0 +1,34 @@
+{
+  "configurations" : [
+    {
+      "id" : "97FA38F9-0074-4EC2-A9B6-DD46D254975C",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+      {
+        "argument" : "13",
+        "enabled" : false
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:",
+      "identifier" : "AdventOfCode",
+      "name" : "AdventOfCode"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "AdventOfCodeTests",
+        "name" : "AdventOfCodeTests"
+      }
+    }
+  ],
+  "version" : 1
+}
