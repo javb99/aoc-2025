@@ -50,8 +50,40 @@ struct Day01Tests: AdventDaySuite {
     #expect(output == "1")
   }
 
+  
+  
   @Test func part2() async throws {
     let output = try await part2(on: sample)
-    #expect(output == "NotImplementedYet")
+    #expect(output == "6")
   }
+  
+  @Test func part2R50() async throws {
+    let output = try await part2(on: """
+    R50
+    R50
+    R50
+    """)
+    #expect(output == "2")
+  }
+  @Test func part2L50() async throws {
+    let output = try await part2(on: """
+    L50
+    L50
+    L50
+    """)
+    #expect(output == "2")
+  }
+  @Test func part2R150() async throws {
+    let output = try await part2(on: """
+    R150
+    """)
+    #expect(output == "2")
+  }
+  @Test func part2L150() async throws {
+    let output = try await part2(on: """
+    L150
+    """)
+    #expect(output == "2")
+  }
+
 }
