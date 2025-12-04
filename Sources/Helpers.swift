@@ -116,10 +116,13 @@ extension BinaryInteger where Self: Strideable, Self.Stride: SignedInteger {
 struct DigitsCollection<Integer: BinaryInteger & Strideable & ExpressibleByIntegerLiteral>: BidirectionalCollection where Integer.Stride: SignedInteger {
   var integer: Integer
   
-  var startIndex: Int { 0 }
-  var endIndex: Int {
-    integer.numberOfBase10Digits
+  init(integer: Integer) {
+    self.integer = integer
+    self.endIndex = integer.numberOfBase10Digits
   }
+  
+  var startIndex: Int { 0 }
+  var endIndex: Int
   func index(before i: Int) -> Int {
     i - 1
   }
