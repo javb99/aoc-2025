@@ -40,7 +40,8 @@ struct Day02: AdventDay {
   
   func isInvalidIDPart2(_ id: Int) -> Bool {
     let digits = id.digits
-    return (0..<digits.count).contains { split in
+    let firstHalfIndices = (0..<(digits.count/2)+1)
+    return firstHalfIndices.contains { split in
       let front = digits[..<split]
       let back = digits[split...]
       guard back.count.isMultiple(of: front.count) else { return false }
