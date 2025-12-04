@@ -15,6 +15,6 @@ struct Day02Tests: AdventDaySuite {
   
   @Test func part2() async throws {
     let output = try await part2(on: sample)
-    #expect(output == "")
+    #expect(output == "4174379265")
   }
 }
