@@ -5,6 +5,7 @@ import OSLog
 let allChallenges: [any AdventDay.Type] = [
   Day00.self,
   Day01.self,
+  Day02.self,
 ]
 
 @main

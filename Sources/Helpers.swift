@@ -86,6 +86,10 @@ extension Dictionary {
 
 
 extension BinaryInteger where Self: Strideable, Self.Stride: SignedInteger {
+  /// Digits with lowest digit first
+  var digits: DigitsCollection<Self> {
+    DigitsCollection(integer: self)
+  }
   var numberOfBase10Digits: Int {
     var digits = 0
     var i = self
@@ -98,12 +102,33 @@ extension BinaryInteger where Self: Strideable, Self.Stride: SignedInteger {
   }
   /// Returns `10^powerOfTen`
   static func pow10(_ powerOfTen: Self) -> Self {
-    precondition(powerOfTen > 0)
+    precondition(powerOfTen >= 0)
+    if powerOfTen == 0 { return 1 }
     var r = 1 as Self
     for _ in 1...powerOfTen {
       r *= 10
     }
     return r
+  }
+}
+
+/// A collection of the base 10 digits of an integer
+struct DigitsCollection<Integer: BinaryInteger & Strideable & ExpressibleByIntegerLiteral>: BidirectionalCollection where Integer.Stride: SignedInteger {
+  var integer: Integer
+  
+  var startIndex: Int { 0 }
+  var endIndex: Int {
+    integer.numberOfBase10Digits
+  }
+  func index(before i: Int) -> Int {
+    i - 1
+  }
+  func index(after i: Int) -> Int {
+    i + 1
+  }
+  subscript(position: Int) -> Int {
+    let withoutLowerDigits = integer.quotientAndRemainder(dividingBy: .pow10(Integer(position))).quotient
+    return Int(withoutLowerDigits.quotientAndRemainder(dividingBy: 10).remainder)
   }
 }
 
