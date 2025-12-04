@@ -113,7 +113,7 @@ extension BinaryInteger where Self: Strideable, Self.Stride: SignedInteger {
 }
 
 /// A collection of the base 10 digits of an integer
-struct DigitsCollection<Integer: BinaryInteger & Strideable & ExpressibleByIntegerLiteral>: BidirectionalCollection where Integer.Stride: SignedInteger {
+struct DigitsCollection<Integer: BinaryInteger & Strideable & ExpressibleByIntegerLiteral>: RandomAccessCollection where Integer.Stride: SignedInteger {
   var integer: Integer
   
   init(integer: Integer) {
